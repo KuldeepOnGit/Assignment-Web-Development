@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Navbar and Hero Section</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* Navigation bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 18px 8%;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .nav-button {
+            padding: 10px 18px;
+            border-radius: 6px;
+            background: #2563eb;
+            color: white !important;
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 520px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            padding: 70px 8%;
+            background: linear-gradient(135deg, #eff6ff, #f5f3ff);
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-content .tagline {
+            display: inline-block;
+            color: #2563eb;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(36px, 5vw, 58px);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 28px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 6px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .button-secondary {
+            background: white;
+            color: #2563eb;
+            border: 1px solid #2563eb;
+        }
+
+        .hero-visual {
+            flex: 1;
+            max-width: 460px;
+            min-height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            font-size: 110px;
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Features section */
+        .features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+            padding: 55px 8%;
+        }
+
+        .feature {
+            flex: 1 1 220px;
+            max-width: 340px;
+            padding: 25px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+        }
+
+        .feature h2 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .feature p {
+            color: #666;
+        }
+
+        footer {
+            padding: 22px;
+            text-align: center;
+            background: #1e293b;
+            color: white;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 18px 5%;
+            }
+
+            .nav-links {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 50px 6%;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                width: 100%;
+                min-height: 230px;
+                font-size: 85px;
+            }
+
+            .features {
+                padding: 40px 6%;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .nav-links {
+                gap: 12px;
+                font-size: 14px;
+            }
+
+            .nav-button {
+                padding: 8px 12px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <a class="logo" href="#">FlexStart</a>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a class="nav-button" href="#contact">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <span class="tagline">WELCOME TO FLEXSTART</span>
+
+                <h1>Build Something Amazing</h1>
+
+                <p>
+                    Create beautiful, responsive web experiences with a
+                    clean layout powered by CSS Flexbox.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="button" href="#features">Explore Features</a>
+                    <a class="button button-secondary" href="#about">Learn More</a>
+                </div>
+            </div>
+
+            <div class="hero-visual" role="img" aria-label="Laptop illustration">
+                💻
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <article class="feature">
+                <h2>📱 Responsive Design</h2>
+                <p>Layouts adjust smoothly to desktop, tablet, and mobile screens.</p>
+            </article>
+
+            <article class="feature" id="about">
+                <h2>⚡ Flexible Layout</h2>
+                <p>Flexbox helps align and distribute content with less effort.</p>
+            </article>
+
+            <article class="feature" id="contact">
+                <h2>🎨 Clean Interface</h2>
+                <p>A simple, modern design that keeps content easy to explore.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 FlexStart. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
