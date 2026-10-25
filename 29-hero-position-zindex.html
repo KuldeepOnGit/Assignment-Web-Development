@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Position and Z-Index</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #1e293b;
+            background: #f1f5f9;
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 16px 7%;
+            background: #0f172a;
+            color: white;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 16px;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            text-decoration: underline;
+        }
+
+        /* The hero establishes a positioning context */
+        .hero {
+            position: relative;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            padding: 60px 8%;
+            overflow: hidden;
+            background: #1d4ed8;
+            color: white;
+        }
+
+        /* Background decoration sits behind the content */
+        .hero-decoration {
+            position: absolute;
+            z-index: 0;
+            width: 320px;
+            height: 320px;
+            right: -60px;
+            top: 70px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .hero-decoration-two {
+            position: absolute;
+            z-index: 0;
+            width: 180px;
+            height: 180px;
+            right: 180px;
+            bottom: -70px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Higher z-index keeps the hero text above the decoration */
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            margin: 0 0 16px;
+            font-size: clamp(32px, 5vw, 56px);
+            line-height: 1.15;
+        }
+
+        .hero p {
+            max-width: 550px;
+            font-size: 18px;
+            color: #dbeafe;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 12px 22px;
+            border-radius: 8px;
+            background: white;
+            color: #1d4ed8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .button:hover,
+        .button:focus {
+            background: #dbeafe;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .info {
+            background: white;
+            padding: 24px;
+            margin-bottom: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+        }
+
+        .info h2 {
+            margin-top: 0;
+            color: #1d4ed8;
+        }
+
+        .demo {
+            position: relative;
+            min-height: 180px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .layer {
+            position: absolute;
+            width: 150px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .layer-one {
+            z-index: 1;
+            left: 20px;
+            top: 20px;
+            background: #64748b;
+        }
+
+        .layer-two {
+            z-index: 2;
+            left: 70px;
+            top: 45px;
+            background: #2563eb;
+        }
+
+        .layer-three {
+            z-index: 3;
+            left: 120px;
+            top: 70px;
+            background: #16a34a;
+        }
+
+        footer {
+            padding: 22px;
+            text-align: center;
+            background: #0f172a;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 16px 5%;
+            }
+
+            nav a {
+                margin-left: 0;
+                margin-right: 12px;
+            }
+
+            .hero {
+                min-height: 400px;
+                padding: 40px 6%;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .layer {
+                width: 120px;
+                height: 80px;
+                font-size: 13px;
+            }
+
+            .layer-one {
+                left: 10px;
+            }
+
+            .layer-two {
+                left: 45px;
+            }
+
+            .layer-three {
+                left: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">CodeSpace</div>
+        <div>
+            <a href="#home">Home</a>
+            <a href="#concepts">Concepts</a>
+            <a href="#layers">Demo</a>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <div class="hero-decoration" aria-hidden="true"></div>
+        <div class="hero-decoration-two" aria-hidden="true"></div>
+
+        <div class="hero-content">
+            <h1>Build Better Websites</h1>
+            <p>
+                Learn how CSS positioning and z-index help arrange content
+                into attractive, layered web designs.
+            </p>
+            <a href="#concepts" class="button">Explore Concepts</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="info" id="concepts">
+            <h2>Understanding Position</h2>
+            <p>
+                <strong>position: relative;</strong> keeps an element in the
+                normal document flow while allowing it to be offset.
+            </p>
+            <p>
+                <strong>position: absolute;</strong> positions an element
+                relative to its nearest positioned ancestor.
+            </p>
+            <p>
+                <strong>z-index</strong> controls the stacking order of
+                positioned elements. A higher value generally places an
+                element above a lower value in the same stacking context.
+            </p>
+        </section>
+
+        <section class="info" id="layers">
+            <h2>Z-Index Layering Demo</h2>
+            <p>
+                The green box has z-index 3, the blue box has z-index 2,
+                and the gray box has z-index 1.
+            </p>
+
+            <div class="demo" aria-label="Overlapping boxes showing z-index">
+                <div class="layer layer-one">Layer 1</div>
+                <div class="layer layer-two">Layer 2</div>
+                <div class="layer layer-three">Layer 3</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CodeSpace. Learning CSS step by step.</p>
+    </footer>
+</body>
+</html>
