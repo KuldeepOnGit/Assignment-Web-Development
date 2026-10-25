@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Variants</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        header h1 {
+            color: #1d4ed8;
+            margin-bottom: 10px;
+        }
+
+        .card-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 21px;
+        }
+
+        .card p {
+            line-height: 1.6;
+            color: #475569;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 16px;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .button:hover,
+        .button:focus {
+            background-color: #1e40af;
+        }
+
+        /* Variant 1: Basic card */
+        .basic-card {
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Variant 2: Featured card */
+        .featured-card {
+            background-color: #dbeafe;
+            border-top: 5px solid #2563eb;
+        }
+
+        .featured-card .button {
+            background-color: #1d4ed8;
+        }
+
+        /* Variant 3: Outlined card */
+        .outlined-card {
+            border: 2px solid #7c3aed;
+            box-shadow: none;
+        }
+
+        .outlined-card h2 {
+            color: #7c3aed;
+        }
+
+        /* Variant 4: Profile card */
+        .profile-card {
+            text-align: center;
+            border-bottom: 5px solid #16a34a;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #dcfce7;
+            color: #166534;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background-color: #dcfce7;
+            color: #166534;
+            font-size: 13px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #64748b;
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>CSS Card Variants</h1>
+        <p>Explore different card designs using HTML and CSS.</p>
+    </header>
+
+    <main class="card-container">
+        <article class="card basic-card">
+            <h2>Basic Card</h2>
+            <p>
+                This is a simple card with a white background, border,
+                rounded corners, and a soft shadow.
+            </p>
+            <a href="#basic" class="button">Learn More</a>
+        </article>
+
+        <article class="card featured-card">
+            <h2>Featured Card</h2>
+            <p>
+                This card uses a highlighted background and a colored
+                top border to attract attention.
+            </p>
+            <a href="#featured" class="button">Explore</a>
+        </article>
+
+        <article class="card outlined-card">
+            <h2>Outlined Card</h2>
+            <p>
+                This variant uses a purple outline and a simple design
+                without a heavy shadow.
+            </p>
+            <a href="#outlined" class="button">Discover</a>
+        </article>
+
+        <article class="card profile-card">
+            <div class="avatar" aria-label="Profile initials">KM</div>
+            <h2>Kuldeep Babu Maheshwari</h2>
+            <p>Student | Web Development Learner</p>
+            <span class="tag">Student Profile</span>
+            <br>
+            <a href="#profile" class="button">View Profile</a>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Card Variants Assignment</p>
+    </footer>
+</body>
+</html>
