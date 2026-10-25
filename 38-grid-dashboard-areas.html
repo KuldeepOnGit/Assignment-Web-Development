@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Dashboard Areas</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            padding: 20px;
+        }
+
+        .dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-areas:
+                "header header"
+                "sidebar main"
+                "footer footer";
+            grid-template-columns: 220px 1fr;
+            grid-template-rows: auto 1fr auto;
+            gap: 20px;
+            min-height: 90vh;
+        }
+
+        .header {
+            grid-area: header;
+            background-color: #2563eb;
+            color: white;
+            padding: 24px;
+            border-radius: 12px;
+        }
+
+        .header h1 {
+            margin-bottom: 8px;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            background-color: #ffffff;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .sidebar h2 {
+            font-size: 20px;
+            margin-bottom: 18px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 16px;
+        }
+
+        .sidebar a {
+            color: #334155;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .sidebar a:hover {
+            color: #2563eb;
+        }
+
+        .main {
+            grid-area: main;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            align-content: start;
+        }
+
+        .card {
+            background-color: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h3 {
+            color: #64748b;
+            font-size: 15px;
+            margin-bottom: 14px;
+        }
+
+        .card .number {
+            font-size: 30px;
+            font-weight: bold;
+            color: #0f172a;
+        }
+
+        .card .note {
+            margin-top: 10px;
+            color: #16a34a;
+            font-size: 14px;
+        }
+
+        .activity {
+            grid-column: 1 / -1;
+            background-color: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .activity h2 {
+            margin-bottom: 18px;
+        }
+
+        .activity p {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            line-height: 1.5;
+        }
+
+        .activity p:last-child {
+            border-bottom: none;
+        }
+
+        .footer {
+            grid-area: footer;
+            background-color: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .main {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 650px) {
+            body {
+                padding: 12px;
+            }
+
+            .dashboard {
+                grid-template-areas:
+                    "header"
+                    "sidebar"
+                    "main"
+                    "footer";
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .main {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard">
+
+        <header class="header">
+            <h1>My Dashboard</h1>
+            <p>Welcome back! Here is your overview.</p>
+        </header>
+
+        <aside class="sidebar">
+            <h2>Navigation</h2>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#students">Students</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#activity">Recent Activity</a></li>
+            </ul>
+        </aside>
+
+        <main class="main" id="overview">
+            <section class="card" id="students">
+                <h3>Total Students</h3>
+                <p class="number">1,250</p>
+                <p class="note">↑ 12% this month</p>
+            </section>
+
+            <section class="card" id="courses">
+                <h3>Active Courses</h3>
+                <p class="number">24</p>
+                <p class="note">↑ 4 new courses</p>
+            </section>
+
+            <section class="card">
+                <h3>Assignments</h3>
+                <p class="number">86</p>
+                <p class="note">↑ 8 this week</p>
+            </section>
+
+            <section class="activity" id="activity">
+                <h2>Recent Activity</h2>
+                <p>📘 New course added: Introduction to Web Development</p>
+                <p>👨‍🎓 25 students enrolled in CSS Grid Basics</p>
+                <p>✅ Assignment submissions received from 18 students</p>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 My Dashboard | Built with CSS Grid</p>
+        </footer>
+
+    </div>
+</body>
+</html>
