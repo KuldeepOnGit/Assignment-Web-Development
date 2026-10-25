@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Wrap Products</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #243b55;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 28px;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .product-card {
+            flex: 1 1 240px;
+            max-width: 280px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+        }
+
+        .product-image {
+            height: 170px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 65px;
+            background: #e7edff;
+        }
+
+        .product-card:nth-child(2) .product-image {
+            background: #fff0df;
+        }
+
+        .product-card:nth-child(3) .product-image {
+            background: #e0f5e9;
+        }
+
+        .product-card:nth-child(4) .product-image {
+            background: #fbe4ec;
+        }
+
+        .product-card:nth-child(5) .product-image {
+            background: #eee5ff;
+        }
+
+        .product-card:nth-child(6) .product-image {
+            background: #fff4c9;
+        }
+
+        .product-info {
+            padding: 18px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+
+        .description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            color: #18794e;
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 14px;
+        }
+
+        .product-info button {
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 6px;
+            background: #243b55;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .product-info button:hover {
+            background: #385779;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            background: #243b55;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 24px 15px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .product-list {
+                gap: 16px;
+            }
+
+            .product-card {
+                flex-basis: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>FlexShop</h1>
+        <p>Discover products you'll love</p>
+    </header>
+
+    <main class="container">
+        <h2 class="section-title">Our Products</h2>
+
+        <section class="product-list" aria-label="Product list">
+
+            <article class="product-card">
+                <div class="product-image" role="img" aria-label="Headphones">🎧</div>
+                <div class="product-info">
+                    <h3>Wireless Headphones</h3>
+                    <p class="description">Enjoy clear sound and comfortable listening.</p>
+                    <p class="price">₹1,499</p>
+                    <button type="button">View Product</button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-image" role="img" aria-label="Smart watch">⌚</div>
+                <div class="product-info">
+                    <h3>Smart Watch</h3>
+                    <p class="description">Track your daily activity in style.</p>
+                    <p class="price">₹2,299</p>
+                    <button type="button">View Product</button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-image" role="img" aria-label="Backpack">🎒</div>
+                <div class="product-info">
+                    <h3>Travel Backpack</h3>
+                    <p class="description">A practical bag for work and travel.</p>
+                    <p class="price">₹999</p>
+                    <button type="button">View Product</button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-image" role="img" aria-label="Camera">📷</div>
+                <div class="product-info">
+                    <h3>Digital Camera</h3>
+                    <p class="description">Capture your favorite moments with ease.</p>
+                    <p class="price">₹5,499</p>
+                    <button type="button">View Product</button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-image" role="img" aria-label="Laptop">💻</div>
+                <div class="product-info">
+                    <h3>Everyday Laptop</h3>
+                    <p class="description">A reliable choice for study and work.</p>
+                    <p class="price">₹39,999</p>
+                    <button type="button">View Product</button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-image" role="img" aria-label="Coffee mug">☕</div>
+                <div class="product-info">
+                    <h3>Ceramic Mug</h3>
+                    <p class="description">Enjoy your favorite hot drink every day.</p>
+                    <p class="price">₹299</p>
+                    <button type="button">View Product</button>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 FlexShop. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
