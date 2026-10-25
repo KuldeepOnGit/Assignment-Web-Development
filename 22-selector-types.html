@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selector Types</title>
+
+    <style>
+        /* Universal Selector */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f5f9;
+            margin: 0;
+            padding: 30px;
+            color: #333333;
+        }
+
+        /* Element Selector */
+        h1 {
+            color: #234e70;
+            text-align: center;
+        }
+
+        /* Class Selector */
+        .highlight {
+            background-color: #fff0b3;
+            padding: 10px;
+            border-left: 4px solid #e0a800;
+        }
+
+        /* ID Selector */
+        #main-heading {
+            border-bottom: 2px solid #234e70;
+            padding-bottom: 10px;
+        }
+
+        /* Group Selector */
+        h2, h3 {
+            color: #176b87;
+        }
+
+        /* Descendant Selector */
+        .content p {
+            line-height: 1.7;
+        }
+
+        /* Attribute Selector */
+        a[target="_blank"] {
+            color: #087f5b;
+            font-weight: bold;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="content">
+        <h1 id="main-heading">CSS Selector Types</h1>
+
+        <h2>1. Element Selector</h2>
+        <p>
+            The element selector targets HTML elements by their tag name.
+            For example, the h1 selector styles all h1 headings.
+        </p>
+
+        <h2>2. Class Selector</h2>
+        <p class="highlight">
+            This paragraph uses the highlight class.
+            Class selectors begin with a dot (.) in CSS.
+        </p>
+
+        <h2>3. ID Selector</h2>
+        <p>
+            The main heading uses the ID "main-heading".
+            ID selectors begin with a hash (#) in CSS.
+        </p>
+
+        <h2>4. Group Selector</h2>
+        <p>
+            The h2 and h3 elements share the same color because
+            they are selected together using a comma.
+        </p>
+
+        <h3>This is an H3 heading</h3>
+
+        <h2>5. Universal Selector</h2>
+        <p>
+            The universal selector (*) matches all elements.
+            Here, it applies box-sizing: border-box.
+        </p>
+
+        <h2>6. Descendant Selector</h2>
+        <p>
+            The selector .content p targets paragraphs located
+            inside an element with the content class.
+        </p>
+
+        <h2>7. Attribute Selector</h2>
+        <p>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors"
+               target="_blank" rel="noopener noreferrer">
+                Learn more about CSS selectors
+            </a>
+        </p>
+    </main>
+</body>
+</html>
