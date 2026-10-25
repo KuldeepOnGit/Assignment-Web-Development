@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A personal portfolio showcasing projects, skills, and contact information.">
+    <title>My Project Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .header {
+            background: #0f172a;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: white;
+            font-size: 15px;
+        }
+
+        .nav a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            color: white;
+            padding: 80px 7%;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-content .tag {
+            display: inline-block;
+            color: #7dd3fc;
+            font-weight: bold;
+            margin-bottom: 14px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: #dbeafe;
+            max-width: 580px;
+            margin-bottom: 26px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #38bdf8;
+            color: #0f172a;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .button:hover {
+            background: #7dd3fc;
+        }
+
+        .hero-visual {
+            min-height: 250px;
+            display: grid;
+            place-items: center;
+        }
+
+        .code-card {
+            width: 100%;
+            max-width: 340px;
+            padding: 28px;
+            border: 1px solid #475569;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .code-dots {
+            display: flex;
+            gap: 7px;
+            margin-bottom: 25px;
+        }
+
+        .code-dots span {
+            width: 11px;
+            height: 11px;
+            background: #38bdf8;
+            border-radius: 50%;
+        }
+
+        .code-card p {
+            margin: 12px 0;
+            color: #bfdbfe;
+            font-family: monospace;
+        }
+
+        .code-card .highlight {
+            color: #7dd3fc;
+        }
+
+        .section {
+            padding: 70px 7%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 38px;
+        }
+
+        .section-heading .eyebrow {
+            color: #0284c7;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 13px;
+        }
+
+        .section-heading h2 {
+            font-size: 32px;
+            margin: 8px 0;
+        }
+
+        .section-heading p {
+            color: #64748b;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+        }
+
+        .project-visual {
+            min-height: 175px;
+            display: grid;
+            place-items: center;
+            font-size: 55px;
+        }
+
+        .visual-blue {
+            background: #dbeafe;
+        }
+
+        .visual-purple {
+            background: #ede9fe;
+        }
+
+        .visual-green {
+            background: #dcfce7;
+        }
+
+        .visual-orange {
+            background: #ffedd5;
+        }
+
+        .visual-pink {
+            background: #fce7f3;
+        }
+
+        .visual-cyan {
+            background: #cffafe;
+        }
+
+        .project-content {
+            padding: 22px;
+        }
+
+        .project-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tags span {
+            background: #eff6ff;
+            color: #1d4ed8;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .skills {
+            background: #eaf2ff;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 24px 15px;
+            text-align: center;
+            border-radius: 12px;
+            border: 1px solid #dbeafe;
+        }
+
+        .skill-card .icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .skill-card h3 {
+            font-size: 17px;
+        }
+
+        .contact {
+            text-align: center;
+            background: #0f172a;
+            color: white;
+        }
+
+        .contact p {
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 12px auto 24px;
+        }
+
+        .footer {
+            background: #020617;
+            color: #94a3b8;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        @media (max-width: 950px) {
+            .hero {
+                grid-template-columns: 1fr 0.8fr;
+            }
+
+            .projects {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 650px) {
+            .header {
+                flex-direction: column;
+            }
+
+            .nav {
+                justify-content: center;
+                gap: 14px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 55px 7%;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-visual {
+                min-height: auto;
+            }
+
+            .section {
+                padding: 50px 6%;
+            }
+
+            .projects,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading h2 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="#home" class="logo">MyPortfolio.</a>
+
+        <nav class="nav" aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <span class="tag">WELCOME TO MY PORTFOLIO</span>
+                <h1>Hi, I'm a Developer in the Making.</h1>
+                <p>
+                    I enjoy building useful digital experiences and learning
+                    new technologies. Explore my projects and the skills
+                    I am developing.
+                </p>
+                <a href="#projects" class="button">Explore My Projects</a>
+            </div>
+
+            <div class="hero-visual">
+                <div class="code-card" aria-label="Decorative code illustration">
+                    <div class="code-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <p><span class="highlight">const</span> developer = {</p>
+                    <p>&nbsp;&nbsp;creative: true,</p>
+                    <p>&nbsp;&nbsp;curious: true,</p>
+                    <p>&nbsp;&nbsp;learning: "every day"</p>
+                    <p>};</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="projects">
+            <div class="section-heading">
+                <span class="eyebrow">My Work</span>
+                <h2>Featured Projects</h2>
+                <p>A selection of practice projects and ideas.</p>
+            </div>
+
+            <div class="projects">
+                <article class="project-card">
+                    <div class="project-visual visual-blue" aria-hidden="true">🌐</div>
+                    <div class="project-content">
+                        <h3>Personal Website</h3>
+                        <p>A responsive website introducing a person, their interests, and their work.</p>
+                        <div class="tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>Grid</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-visual visual-purple" aria-hidden="true">📊</div>
+                    <div class="project-content">
+                        <h3>Dashboard UI</h3>
+                        <p>A dashboard layout with summary cards, navigation, and activity information.</p>
+                        <div class="tags">
+                            <span>HTML</span>
+                            <span>CSS Grid</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-visual visual-green" aria-hidden="true">🛍️</div>
+                    <div class="project-content">
+                        <h3>Product Gallery</h3>
+                        <p>A product page with a responsive grid, categories, and product details.</p>
+                        <div class="tags">
+                            <span>CSS</span>
+                            <span>Responsive</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-visual visual-orange" aria-hidden="true">🎓</div>
+                    <div class="project-content">
+                        <h3>Student Portal</h3>
+                        <p>A concept interface for showing courses, assignments, and student resources.</p>
+                        <div class="tags">
+                            <span>HTML</span>
+                            <span>Layout</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-visual visual-pink" aria-hidden="true">📝</div>
+                    <div class="project-content">
+                        <h3>Blog Layout</h3>
+                        <p>A clean blog interface for organizing articles and personal stories.</p>
+                        <div class="tags">
+                            <span>Typography</span>
+                            <span>CSS</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-visual visual-cyan" aria-hidden="true">💡</div>
+                    <div class="project-content">
+                        <h3>Creative Ideas</h3>
+                        <p>A space for experimenting with web layouts, design concepts, and new ideas.</p>
+                        <div class="tags">
+                            <span>Design</span>
+                            <span>Practice</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section skills" id="skills">
+            <div class="section-heading">
+                <span class="eyebrow">What I Use</span>
+                <h2>My Skills</h2>
+                <p>Technologies and tools I am learning.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="icon" aria-hidden="true">🌐</div>
+                    <h3>HTML</h3>
+                </div>
+
+                <div class="skill-card">
+                    <div class="icon" aria-hidden="true">🎨</div>
+                    <h3>CSS</h3>
+                </div>
+
+                <div class="skill-card">
+                    <div class="icon" aria-hidden="true">💻</div>
+                    <h3>JavaScript</h3>
+                </div>
+
+                <div class="skill-card">
+                    <div class="icon" aria-hidden="true">🐍</div>
+                    <h3>Python</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact" id="contact">
+            <div class="section-heading">
+                <span class="eyebrow">Get in Touch</span>
+                <h2>Let's Connect</h2>
+            </div>
+
+            <p>
+                Interested in my work or want to collaborate on a project?
+                You can add your email address or social profile link here.
+            </p>
+
+            <a class="button" href="mailto:your-email@example.com">Contact Me</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 My Portfolio. Built with HTML and CSS Grid.</p>
+    </footer>
+
+</body>
+</html>
