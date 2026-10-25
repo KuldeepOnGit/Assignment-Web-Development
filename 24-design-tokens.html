@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Design Tokens</title>
+
+    <style>
+        /* Design Tokens */
+        :root {
+            --color-primary: #234e70;
+            --color-secondary: #2878a5;
+            --color-accent: #e0a800;
+            --color-background: #f2f5f9;
+            --color-surface: #ffffff;
+            --color-text: #333333;
+            --color-muted: #666666;
+
+            --font-main: Arial, sans-serif;
+            --font-heading: Georgia, serif;
+
+            --spacing-small: 8px;
+            --spacing-medium: 16px;
+            --spacing-large: 24px;
+            --spacing-xl: 32px;
+
+            --radius-small: 6px;
+            --radius-large: 12px;
+
+            --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.10);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            margin: 0;
+            padding: var(--spacing-xl);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--color-primary);
+            color: var(--color-surface);
+            padding: var(--spacing-large);
+            text-align: center;
+            border-radius: var(--radius-large);
+        }
+
+        h1, h2 {
+            font-family: var(--font-heading);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: var(--spacing-xl) auto;
+        }
+
+        .card {
+            background-color: var(--color-surface);
+            padding: var(--spacing-large);
+            margin-bottom: var(--spacing-large);
+            border-radius: var(--radius-large);
+            box-shadow: var(--shadow-card);
+        }
+
+        .primary-button {
+            display: inline-block;
+            background-color: var(--color-secondary);
+            color: var(--color-surface);
+            padding: var(--spacing-small) var(--spacing-medium);
+            border: none;
+            border-radius: var(--radius-small);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .accent {
+            color: var(--color-accent);
+            font-weight: bold;
+        }
+
+        .muted {
+            color: var(--color-muted);
+        }
+
+        code {
+            background-color: var(--color-background);
+            padding: 3px 6px;
+            border-radius: var(--radius-small);
+        }
+
+        footer {
+            text-align: center;
+            color: var(--color-muted);
+            margin-top: var(--spacing-xl);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>CSS Design Tokens</h1>
+        <p>Consistent Design Using Reusable CSS Variables</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>What Are Design Tokens?</h2>
+            <p>
+                Design tokens are reusable values for colors, fonts, spacing,
+                borders, and other design properties. In CSS, custom properties
+                allow us to store these values in one place.
+            </p>
+            <p>
+                For example, <code>var(--color-primary)</code> uses the primary
+                color defined inside the <code>:root</code> selector.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>Color Tokens</h2>
+            <p>Primary color: <code>--color-primary</code></p>
+            <p>Secondary color: <code>--color-secondary</code></p>
+            <p>Accent color: <span class="accent">--color-accent</span></p>
+            <p class="muted">Muted text uses the muted color token.</p>
+        </section>
+
+        <section class="card">
+            <h2>Spacing and Components</h2>
+            <p>
+                This card uses reusable spacing, border-radius, font, and
+                shadow tokens to keep the design consistent.
+            </p>
+            <a class="primary-button" href="#learn-more">Explore Design Tokens</a>
+        </section>
+
+        <section class="card" id="learn-more">
+            <h2>Why Use Design Tokens?</h2>
+            <ul>
+                <li>Keep colors and spacing consistent.</li>
+                <li>Change a design value in one place.</li>
+                <li>Make CSS easier to maintain.</li>
+                <li>Reuse the same values across components.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CSS Design Tokens Demo</p>
+    </footer>
+</body>
+</html>
