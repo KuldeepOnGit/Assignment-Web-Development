@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model - Annotated</title>
+
+    <style>
+        /* Apply predictable sizing to every element */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1d4ed8;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* This element demonstrates all four parts of the box model */
+        .box {
+            /* Content: the text inside the element */
+            width: 300px;
+            min-height: 120px;
+
+            /* Padding: space between content and border */
+            padding: 20px;
+
+            /* Border: line around the padding and content */
+            border: 5px solid #2563eb;
+
+            /* Margin: space outside the border */
+            margin: 30px auto;
+
+            background-color: #bfdbfe;
+            text-align: center;
+        }
+
+        .explanation {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .explanation h2 {
+            color: #1d4ed8;
+        }
+
+        .explanation li {
+            margin-bottom: 10px;
+        }
+
+        /* Different colors help distinguish the box model parts */
+        .content-demo {
+            background-color: #86efac;
+            padding: 10px;
+            border: 2px solid #15803d;
+        }
+
+        .note {
+            text-align: center;
+            font-size: 14px;
+            color: #475569;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS Box Model</h1>
+
+    <p class="intro">
+        Every HTML element is displayed as a box made up of different layers.
+    </p>
+
+    <div class="box">
+        <strong>Example Box</strong>
+        <p>Content appears inside this area.</p>
+    </div>
+
+    <section class="explanation">
+        <h2>The Four Parts of the Box Model</h2>
+
+        <ol>
+            <li>
+                <strong>Content:</strong>
+                The text, image, or other information inside an element.
+            </li>
+            <li>
+                <strong>Padding:</strong>
+                Space between the content and the border.
+            </li>
+            <li>
+                <strong>Border:</strong>
+                The line surrounding the content and padding.
+            </li>
+            <li>
+                <strong>Margin:</strong>
+                Space outside the border that separates the element from others.
+            </li>
+        </ol>
+
+        <h2>Colored Box Example</h2>
+
+        <div class="content-demo">
+            This box has padding and a green border.
+        </div>
+    </section>
+
+    <p class="note">
+        Note: The box uses box-sizing: border-box, so its declared width includes
+        its content, padding, and border.
+    </p>
+</body>
+</html>
