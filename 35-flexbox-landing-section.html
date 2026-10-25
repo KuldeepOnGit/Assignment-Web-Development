@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Landing Section</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #1f2937;
+            line-height: 1.6;
+            background: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1120px, 90%);
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            padding: 22px 0;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #0f766e;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #0f766e;
+        }
+
+        .nav-cta {
+            padding: 10px 17px;
+            color: white !important;
+            background: #0f766e;
+            border-radius: 7px;
+        }
+
+        /* Landing hero */
+        .landing {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 55px;
+            min-height: 560px;
+            padding: 60px 0;
+        }
+
+        .landing-content {
+            flex: 1;
+            max-width: 570px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 18px;
+            border-radius: 20px;
+            background: #ccfbf1;
+            color: #115e59;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .landing-content h1 {
+            margin-bottom: 20px;
+            font-size: clamp(36px, 5vw, 56px);
+            line-height: 1.15;
+        }
+
+        .landing-content h1 span {
+            color: #0f766e;
+        }
+
+        .landing-content p {
+            margin-bottom: 28px;
+            color: #6b7280;
+            font-size: 17px;
+        }
+
+        .landing-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 21px;
+            border-radius: 7px;
+            background: #0f766e;
+            color: white;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: #115e59;
+        }
+
+        .button-outline {
+            border: 1px solid #0f766e;
+            background: transparent;
+            color: #0f766e;
+        }
+
+        .button-outline:hover {
+            background: #ccfbf1;
+        }
+
+        /* Visual panel */
+        .landing-visual {
+            flex: 1;
+            max-width: 480px;
+            min-height: 360px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            padding: 35px;
+            border-radius: 24px;
+            background: linear-gradient(145deg, #ccfbf1, #dbeafe);
+        }
+
+        .visual-icon {
+            font-size: 100px;
+        }
+
+        .visual-card {
+            width: 100%;
+            max-width: 290px;
+            padding: 20px;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 8px 20px rgba(15, 118, 110, 0.1);
+        }
+
+        .visual-card h2 {
+            margin-bottom: 6px;
+            font-size: 18px;
+        }
+
+        .visual-card p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* Benefits */
+        .benefits {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+            padding: 35px 0 65px;
+        }
+
+        .benefit {
+            flex: 1 1 220px;
+            padding: 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+        }
+
+        .benefit h2 {
+            margin: 10px 0;
+            font-size: 19px;
+        }
+
+        .benefit p {
+            color: #6b7280;
+            font-size: 15px;
+        }
+
+        .benefit-icon {
+            font-size: 30px;
+        }
+
+        footer {
+            padding: 22px 0;
+            text-align: center;
+            color: #d1d5db;
+            background: #111827;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 800px) {
+            .navbar {
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            .nav-links {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+
+            .landing {
+                flex-direction: column;
+                text-align: center;
+                gap: 35px;
+                padding: 45px 0;
+            }
+
+            .landing-actions {
+                justify-content: center;
+            }
+
+            .landing-visual {
+                width: 100%;
+                min-height: 300px;
+            }
+
+            .benefits {
+                padding-top: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 92%;
+            }
+
+            .nav-links {
+                gap: 12px;
+                font-size: 14px;
+            }
+
+            .landing-content h1 {
+                font-size: 36px;
+            }
+
+            .landing-content p {
+                font-size: 16px;
+            }
+
+            .landing-visual {
+                padding: 24px;
+            }
+
+            .visual-icon {
+                font-size: 75px;
+            }
+
+            .button {
+                padding: 12px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="container">
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="#" class="logo">GrowSpace</a>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact" class="nav-cta">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="landing container" id="home">
+            <div class="landing-content">
+                <span class="eyebrow">GROW WITH CONFIDENCE</span>
+
+                <h1>Make Your Ideas <span>Grow Faster</span></h1>
+
+                <p>
+                    Discover simple tools and smart resources to help you
+                    learn, create, and turn your ideas into something meaningful.
+                </p>
+
+                <div class="landing-actions">
+                    <a href="#benefits" class="button">Explore Benefits</a>
+                    <a href="#about" class="button button-outline">Learn More</a>
+                </div>
+            </div>
+
+            <div class="landing-visual" id="about">
+                <div class="visual-icon" role="img" aria-label="Growing plant">🌱</div>
+
+                <div class="visual-card">
+                    <h2>Your Next Step Starts Here</h2>
+                    <p>Learn something new. Build something great.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="benefits container" id="benefits">
+            <article class="benefit">
+                <div class="benefit-icon" aria-hidden="true">🎯</div>
+                <h2>Stay Focused</h2>
+                <p>Organize your goals and make steady progress toward them.</p>
+            </article>
+
+            <article class="benefit">
+                <div class="benefit-icon" aria-hidden="true">💡</div>
+                <h2>Discover Ideas</h2>
+                <p>Explore useful resources that help you think creatively.</p>
+            </article>
+
+            <article class="benefit" id="contact">
+                <div class="benefit-icon" aria-hidden="true">🚀</div>
+                <h2>Keep Growing</h2>
+                <p>Build your skills step by step and celebrate your progress.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 GrowSpace. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
