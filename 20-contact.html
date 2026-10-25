@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Kuldeep's Website</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f2f5f9; color: #243b55; }
+        header { background: #243b55; color: white; padding: 25px; text-align: center; }
+        nav { background: #345678; padding: 15px; text-align: center; }
+        nav a { color: white; margin: 0 12px; text-decoration: none; font-weight: bold; }
+        main { max-width: 850px; margin: 30px auto; padding: 25px; background: white; border-radius: 10px; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box; }
+        button { margin-top: 15px; padding: 10px 20px; background: #243b55; color: white; border: none; cursor: pointer; }
+        footer { text-align: center; padding: 20px; color: #555; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+        <p>We Would Love to Hear From You</p>
+    </header>
+
+    <nav>
+        <a href="20-multipage-project.html">Home</a>
+        <a href="20-about.html">About</a>
+        <a href="20-courses.html">Courses</a>
+        <a href="20-contact.html">Contact</a>
+    </nav>
+
+    <main>
+        <h2>Send a Message</h2>
+        <form action="#" method="get">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+        <p>Note: This is a demonstration form. It does not send messages to a server.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kuldeep's Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
