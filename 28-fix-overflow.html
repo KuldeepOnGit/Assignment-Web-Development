@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix CSS Overflow</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 24px;
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #1d4ed8;
+        }
+
+        main {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .example {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 24px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .example h2 {
+            margin-top: 0;
+            color: #1e40af;
+        }
+
+        /* Problem: a long unbroken word can overflow its container */
+        .long-text {
+            border: 2px solid #dc2626;
+            padding: 12px;
+            overflow-wrap: anywhere;
+        }
+
+        /* Fix: long URLs and words can wrap onto another line */
+        .fixed-text {
+            border: 2px solid #16a34a;
+            padding: 12px;
+            overflow-wrap: anywhere;
+        }
+
+        /* Keep images inside their parent container */
+        .responsive-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Scroll horizontally when a wide table cannot fit */
+        .table-wrapper {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            min-width: 500px;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            text-align: left;
+        }
+
+        th {
+            background-color: #dbeafe;
+        }
+
+        .code {
+            padding: 12px;
+            background-color: #e2e8f0;
+            border-radius: 6px;
+            overflow-wrap: anywhere;
+            font-family: monospace;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #64748b;
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 14px;
+            }
+
+            .example {
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Fix CSS Overflow</h1>
+        <p>Learn how to keep content inside its container.</p>
+    </header>
+
+    <main>
+        <section class="example">
+            <h2>1. Long Text and URLs</h2>
+            <p>
+                The following example uses <code>overflow-wrap: anywhere;</code>
+                so that long unbroken text can wrap instead of escaping the box.
+            </p>
+
+            <div class="long-text">
+                https://example.com/averylongurlwithmanycharactersandnospaceswhichcouldcauseoverflow
+            </div>
+
+            <p class="fixed-text">
+                This paragraph also wraps long text safely:
+                supercalifragilisticexpialidocioussupercalifragilisticexpialidocious
+            </p>
+        </section>
+
+        <section class="example">
+            <h2>2. Responsive Images</h2>
+            <p>
+                Images should not exceed the width of their parent container.
+                Use max-width: 100% and height: auto.
+            </p>
+
+            <img
+                class="responsive-image"
+                src="https://placehold.co/900x250/2563eb/ffffff?text=Responsive+Image"
+                alt="A sample image demonstrating responsive sizing"
+                width="900"
+                height="250"
+            >
+        </section>
+
+        <section class="example">
+            <h2>3. Wide Tables</h2>
+            <p>
+                A wide table can scroll horizontally within its wrapper
+                instead of making the entire page overflow.
+            </p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Course</th>
+                            <th>Assignment</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Kuldeep</td>
+                            <td>Web Development</td>
+                            <td>CSS Overflow</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr>
+                            <td>Student Two</td>
+                            <td>HTML and CSS</td>
+                            <td>Responsive Layout</td>
+                            <td>In Progress</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="example">
+            <h2>4. Important CSS Fixes</h2>
+
+            <p class="code">
+                overflow-wrap: anywhere;
+            </p>
+
+            <p class="code">
+                max-width: 100%; height: auto;
+            </p>
+
+            <p class="code">
+                overflow-x: auto;
+            </p>
+
+            <p>
+                Use the appropriate fix for the content. Avoid applying
+                <code>overflow: hidden</code> everywhere, because it may
+                cut off useful information.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CSS Overflow Assignment</p>
+    </footer>
+</body>
+</html>
