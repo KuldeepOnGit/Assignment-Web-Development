@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Marks Analyser</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 16px;
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    h1, h2 {
+      color: #3730a3;
+    }
+
+    form, .panel, #summary {
+      background: white;
+      padding: 18px;
+      margin: 18px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #0000000d;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 6px 4px 6px 0;
+      max-width: 100%;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+      border-radius: 5px;
+      background: #4f46e5;
+      color: white;
+    }
+
+    button:hover {
+      background: #3730a3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      margin-top: 16px;
+    }
+
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background: #e0e7ff;
+    }
+
+    #message {
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      input {
+        width: 95%;
+      }
+
+      table {
+        font-size: 14px;
+      }
+
+      th, td {
+        padding: 7px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Student Marks Analyser</h1>
+  <p>Enter student names and marks to analyse the results.</p>
+
+  <form id="studentForm">
+    <label for="studentName">Student Name:</label>
+    <input
+      type="text"
+      id="studentName"
+      placeholder="Enter student name"
+      required
+    >
+
+    <label for="studentMarks">Marks (0–100):</label>
+    <input
+      type="number"
+      id="studentMarks"
+      placeholder="Enter marks"
+      min="0"
+      max="100"
+      step="1"
+      required
+    >
+
+    <button type="submit">Add Student</button>
+  </form>
+
+  <p id="message" role="status"></p>
+
+  <section class="panel">
+    <h2>Search Student</h2>
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search by student name"
+    >
+    <button type="button" id="searchButton">Search</button>
+    <button type="button" id="showAllButton">Show All</button>
+  </section>
+
+  <section class="panel">
+    <h2>Student Results</h2>
+    <button type="button" id="sortButton">
+      Sort by Marks (Highest First)
+    </button>
+
+    <div id="summary"></div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Marks</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody id="resultsBody"></tbody>
+    </table>
+  </section>
+
+  <script>
+    const students = [];
+
+    const studentForm = document.getElementById("studentForm");
+    const studentName = document.getElementById("studentName");
+    const studentMarks = document.getElementById("studentMarks");
+    const message = document.getElementById("message");
+    const resultsBody = document.getElementById("resultsBody");
+    const summary = document.getElementById("summary");
+    const searchInput = document.getElementById("searchInput");
+
+    function getGrade(marks) {
+      if (marks >= 90) return "A+";
+      if (marks >= 80) return "A";
+      if (marks >= 70) return "B";
+      if (marks >= 60) return "C";
+      if (marks >= 40) return "D";
+      return "F";
+    }
+
+    function calculateStatistics(data) {
+      if (data.length === 0) return null;
+
+      const marks = data.map(student => student.marks);
+      const total = marks.reduce((sum, mark) => sum + mark, 0);
+
+      return {
+        total: total,
+        average: total / marks.length,
+        highest: Math.max(...marks),
+        lowest: Math.min(...marks)
+      };
+    }
+
+    function renderResults(data) {
+      resultsBody.replaceChildren();
+
+      if (data.length === 0) {
+        const row = document.createElement("tr");
+        const cell = document.createElement("td");
+
+        cell.colSpan = 3;
+        cell.textContent = "No student records found.";
+        row.appendChild(cell);
+        resultsBody.appendChild(row);
+
+        summary.textContent = "No results available.";
+        return;
+      }
+
+      data.forEach(student => {
+        const row = document.createElement("tr");
+
+        [student.name, student.marks, getGrade(student.marks)]
+          .forEach(value => {
+            const cell = document.createElement("td");
+            cell.textContent = value;
+            row.appendChild(cell);
+          });
+
+        resultsBody.appendChild(row);
+      });
+
+      const stats = calculateStatistics(data);
+
+      summary.innerHTML = `
+        <h3>Result Summary</h3>
+        <p>Total Students: ${data.length}</p>
+        <p>Total Marks: ${stats.total}</p>
+        <p>Average Marks: ${stats.average.toFixed(2)}</p>
+        <p>Highest Marks: ${stats.highest}</p>
+        <p>Lowest Marks: ${stats.lowest}</p>
+      `;
+    }
+
+    studentForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = studentName.value.trim();
+      const marksValue = studentMarks.value.trim();
+      const marks = Number(marksValue);
+
+      if (!name) {
+        message.textContent = "Please enter a student name.";
+        return;
+      }
+
+      if (
+        marksValue === "" ||
+        !Number.isFinite(marks) ||
+        marks < 0 ||
+        marks > 100 ||
+        !Number.isInteger(marks)
+      ) {
+        message.textContent =
+          "Enter valid whole-number marks from 0 to 100.";
+        return;
+      }
+
+      const duplicate = students.some(
+        student => student.name.toLowerCase() === name.toLowerCase()
+      );
+
+      if (duplicate) {
+        message.textContent = "This student name already exists.";
+        return;
+      }
+
+      students.push({ name: name, marks: marks });
+
+      message.textContent = `${name} added successfully!`;
+      studentForm.reset();
+      renderResults(students);
+    });
+
+    document.getElementById("searchButton")
+      .addEventListener("click", function() {
+        const query = searchInput.value.trim().toLowerCase();
+
+        if (!query) {
+          message.textContent = "Enter a student name to search.";
+          return;
+        }
+
+        const matches = students.filter(student =>
+          student.name.toLowerCase().includes(query)
+        );
+
+        renderResults(matches);
+        message.textContent =
+          `${matches.length} matching student(s) found.`;
+      });
+
+    document.getElementById("showAllButton")
+      .addEventListener("click", function() {
+        renderResults(students);
+        message.textContent = "Showing all student records.";
+      });
+
+    document.getElementById("sortButton")
+      .addEventListener("click", function() {
+        const sortedStudents = [...students].sort(
+          (a, b) => b.marks - a.marks
+        );
+
+        renderResults(sortedStudents);
+        message.textContent = "Results sorted by highest marks.";
+      });
+
+    renderResults(students);
+  </script>
+</body>
+</html>
