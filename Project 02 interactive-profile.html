@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project 02 - Interactive Profile</title>
+
+  <link rel="stylesheet" href="Project 02 interactive-profile.css">
+  <script src="Project 02 interactive-profile.js" defer></script>
+</head>
+<body>
+  <main class="profile-card">
+    <div class="avatar">KBM</div>
+
+    <h1 id="name">Kuldeep Babu Maheshwari</h1>
+    <p class="subtitle">Learning JavaScript</p>
+
+    <div class="actions">
+      <button id="themeBtn">Toggle Theme</button>
+      <button id="likeBtn">Like (<span id="likes">0</span>)</button>
+    </div>
+
+    <section class="faq">
+      <button id="faqBtn" aria-expanded="false">
+        What do I do?
+      </button>
+
+      <p id="faqAnswer" class="hidden">
+        I am learning JavaScript!
+      </p>
+    </section>
+  </main>
+</body>
+</html>
